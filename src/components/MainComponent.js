@@ -5,7 +5,7 @@ import { Switch, Route, Link, Redirect } from 'react-router-dom';
 
 const Home = () => {
 
-  const playSound = (soundObject) => {
+  const playSound = (soundObject) => {                      //this needs some more attention
     var thissound = document.getElementById(soundObject);
     var playPromise = thissound.play();
     if (playPromise !== undefined)
