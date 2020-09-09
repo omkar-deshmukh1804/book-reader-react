@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {historyPdfRender} from './historyPdfRender';
+import Navbar from './NavbarComponent';
 
 const HistoryComponent = () => {
     
@@ -24,45 +24,8 @@ const HistoryComponent = () => {
       }
     return (
         <section>
-        <nav id="navbar">
-        <Link
-          id="logo-link"
-          onMouseOver={() => playSound('book-reader')}
-          onMouseOut={() => stopSound('book-reader')}
-          to="/home"
-        >
-          <h1 className="logo">
-            <span className="text-primary">
-              <i className="fas fa-book-open"></i> Book</span
-            >Reader
-          </h1>
-        </Link>
-  
-        <ul>
-          <li>
-            <Link
-            to="/home"
-            onMouseOver={() => playSound('home')}
-            onMouseOut={() => stopSound('home')}
-            >Home
-            </Link>
-          </li>
-          <li>
-            <Link to="books"
-            onMouseOver={() => playSound('books')}
-            onMouseOut={() => stopSound('books')}
-            >Books
-            </Link>
-          </li>
-          <li className="u-px-medium">
-            <Link to="/aboutus"
-            onMouseOver={() => playSound('about')}
-            onMouseOut={() => stopSound('about')}
-            >About</Link
-            >
-          </li>
-        </ul>
-      </nav>
+        <Navbar onPlaySound={(soundObject) =>  playSound(soundObject)}
+        onStopSound={(soundObject) => stopSound(soundObject)} />
   
       <audio id="home" src="audio/home.mp3"></audio>
       <audio id="books" src="audio/books.mp3"></audio>

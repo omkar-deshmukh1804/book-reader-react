@@ -1,7 +1,7 @@
 
-export const englishPdfRender = () => {
+
     /* PDF render */
-    const pdfjsLib = null;
+  
 
     const url = '../../public/docs/english/english-1-20.pdf';
 
@@ -104,7 +104,7 @@ const keyEvent = (event) => {
 };
 
 // Get Document
-pdfjsLib
+    pdfjsLib
     .getDocument(url)
     .promise.then((pdfDoc_) => {
     pdfDoc = pdfDoc_;
@@ -134,6 +134,6 @@ document
 
 document.addEventListener('keydown', keyEvent);
 
-}
+
 
 // export default englishPdfRender;
