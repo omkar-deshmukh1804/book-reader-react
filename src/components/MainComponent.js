@@ -1,7 +1,11 @@
 import React from 'react';
 import AboutUs from './AboutUsComponent'
 import Books from './BooksComponent'
-import { Switch, Route, Link, Redirect } from 'react-router-dom';
+import English from './EnglishComponent'
+import Geography from './GeographyComponent';
+import History from './HistoryComponent';
+import { Switch, Route, Link, Redirect, BrowserRouter } from 'react-router-dom';
+
 
 const Home = () => {
 
@@ -26,40 +30,44 @@ const Home = () => {
     return (
         <section>
         <nav id="navbar">
-      <a
-        id="logo-link"
-        onMouseOver={() => playSound('book-reader')}
-        onMouseOut={() => stopSound('book-reader')}
-        href="index.html"
-      >
-        <h1 className="logo">
-          <span className="text-primary">
-            <i className="fas fa-book-open"></i> Book
-            </span>Reader
-        </h1>
-      </a>
-
-      <ul>
-        <li>
-          <div
+        <Link
+          id="logo-link"
+          onMouseOver={() => playSound('book-reader')}
+          onMouseOut={() => stopSound('book-reader')}
+          to="/home"
+        >
+          <h1 className="logo">
+            <span className="text-primary">
+              <i className="fas fa-book-open"></i> Book</span
+            >Reader
+          </h1>
+        </Link>
+  
+        <ul>
+          <li>
+            <Link
+            to="/home"
             onMouseOver={() => playSound('home')}
             onMouseOut={() => stopSound('home')}
-          > <Link to="/home" >Home</Link></div>
-        </li>
-        <li>
-          <div
+            >Home
+            </Link>
+          </li>
+          <li>
+            <Link to="books"
             onMouseOver={() => playSound('books')}
             onMouseOut={() => stopSound('books')}
-            > <Link to="/books">Books</Link></div>
-        </li>
-        <li className="u-px-medium">
-          <div
+            >Books
+            </Link>
+          </li>
+          <li className="u-px-medium">
+            <Link to="/aboutus"
             onMouseOver={() => playSound('about')}
             onMouseOut={() => stopSound('about')}
-            > <Link to="/aboutus" >About </Link></div>
-        </li> 
-      </ul>
-    </nav>
+            >About</Link
+            >
+          </li>
+        </ul>
+      </nav>
 
     <audio id="home" src="audio/home.mp3"></audio>
     <audio id="books" src="audio/books.mp3"></audio>
@@ -86,25 +94,31 @@ const Home = () => {
           </span>
         </h1>
 
-        <div
+        <Link to="/books"
           className="btn btn-white btn-animated"
           onMouseOver={() => playSound('main-button')}
           onMouseOut={() => stopSound('main-button')}
-        ><Link to="/books">Discover all Books</Link> 
-        </div>
+        >Discover all Books
+        </Link>
       </div>
     </header>
     </section>
     )
 }
 const MainComponent = () => {
-    return (
+  return (
+      <BrowserRouter>
         <Switch>
             <Route path="/home" component={Home} />
             <Route path="/aboutus" component={AboutUs} />
             <Route path="/books" component={Books}></Route>
+            <Route path="/english" exact component={English} ></Route>
+            <Route path="/history" exact component={History} ></Route>
+            <Route path="/geography" exact component={Geography} ></Route>
             <Redirect to="/home" />
         </Switch>
+      </BrowserRouter>
+     
     );
 }
 
